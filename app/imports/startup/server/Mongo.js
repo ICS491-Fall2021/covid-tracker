@@ -5,7 +5,7 @@ import { Symptoms } from '../../api/stuff/Symptom.js';
 
 // Initialize the database with a default data document.
 function addData(data) {
-  console.log(`  Adding: ${data.symptomatic} (${data.owner})`);
+  console.log(`  Adding: ${data.status} (${data.owner})`);
   Symptoms.collection.insert(data);
 }
 

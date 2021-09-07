@@ -18,7 +18,7 @@ class ListStuff extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center">List Stuff</Header>
+        <Header as="h2" textAlign="center">Your past reports</Header>
         <Table celled>
           <Table.Header>
             <Table.Row>

@@ -13,9 +13,13 @@ import { Tracker } from 'meteor/tracker';
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      symptomatic: Boolean,
-      createdAt: Date,
       owner: String,
+      createdAt: Date,
+      status: {
+        type: String,
+        allowedValues: ['Not Inputted', 'Clear', 'Not clear'],
+        defaultValue: 'Not Inputted',
+      },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
