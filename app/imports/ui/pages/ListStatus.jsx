@@ -4,10 +4,10 @@ import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Statuses } from '../../api/status/Status';
-import StuffItem from '../components/StatusItem';
+import StatusItem from '../components/StatusItem';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuff extends React.Component {
+/** Renders a table containing all of the Status documents. Use <StatusItem> to render each row. */
+class ListStatus extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -18,18 +18,17 @@ class ListStuff extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center">Your past reports</Header>
+        <Header as="h2" textAlign="center">Your past reported statuses</Header>
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Condition</Table.HeaderCell>
+              <Table.HeaderCell>Date</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
               <Table.HeaderCell>Edit</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.props.Statuses.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+            {this.props.statuses.map((status) => <StatusItem key={status._id} status={status} />)}
           </Table.Body>
         </Table>
       </Container>
@@ -37,22 +36,22 @@ class ListStuff extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
-ListStuff.propTypes = {
-  Statuses: PropTypes.array.isRequired,
+// Require an array of Status documents in the props.
+ListStatus.propTypes = {
+  statuses: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Status documents.
   const subscription = Meteor.subscribe(Statuses.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
-  const Statuses = Statuses.collection.find({}).fetch();
+  // Get the Status documents
+  const statuses = Statuses.collection.find({}).fetch();
   return {
-    Statuses,
+    statuses,
     ready,
   };
-})(ListStuff);
+})(ListStatus);

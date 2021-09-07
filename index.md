@@ -137,7 +137,7 @@ client/
 
 imports/
   api/           # Define collections
-    stuff/       # The Statuses collection definition
+    Status/       # The Statuses collection definition
   startup/       # Define code to run when system starts up (client-only, server-only, both)
     client/
     server/
@@ -160,9 +160,9 @@ This system adheres to the Meteor guideline of putting all application code in t
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String), a quantity (Number), and a condition (one of 'excellent', 'good', 'fair', or 'poor').
+The application implements a simple CRUD application for managing "Status", which is a Mongo Collection consisting of a name (String), a quantity (Number), and a condition (one of 'excellent', 'good', 'fair', or 'poor').
 
-By default, each user only sees the Stuff that they have created.  However, the settings file enables you to define default accounts.  If you define a user with the role "admin", then that user gets access to a special page which lists all the Stuff defined by all users.
+By default, each user only sees the Status that they have created.  However, the settings file enables you to define default accounts.  If you define a user with the role "admin", then that user gets access to a special page which lists all the Status defined by all users.
 
 #### Landing page
 
@@ -191,27 +191,27 @@ Once you log in (either to an existing account or by creating a new one), the na
 
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-after-login-page.png)
 
-You can now add new Stuff documents, and list the Stuff you have created. Note you cannot see any Stuff created by other users.
+You can now add new Status documents, and list the Status you have created. Note you cannot see any Status created by other users.
 
-#### Add Stuff page
+#### Add Status page
 
-After logging in, here is the page that allows you to add new Stuff:
+After logging in, here is the page that allows you to add new Status:
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/add-stuff-page.png)
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/add-Status-page.png)
 
-#### List Stuff page
+#### List Status page
 
-After logging in, here is the page that allows you to list all the Stuff you have created:
+After logging in, here is the page that allows you to list all the Status you have created:
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/list-stuff-page.png)
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/list-Status-page.png)
 
-You click the "Edit" link to go to the Edit Stuff page, shown next.
+You click the "Edit" link to go to the Edit Status page, shown next.
 
-#### Edit Stuff page
+#### Edit Status page
 
 After clicking on the "Edit" link associated with an item, this page displays that allows you to change and save it:
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/edit-stuff-page.png)
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/edit-Status-page.png)
 
 #### Landing (after Login), Admin user
 
@@ -219,11 +219,11 @@ You can define an "admin" user in the settings.json file. This user, after loggi
 
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-landing-page.png)
 
-#### Admin page (list all users stuff)
+#### Admin page (list all users Status)
 
-To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Stuff by all of the users:
+To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Status by all of the users:
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-list-stuff-page.png)
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-list-Status-page.png)
 
 Note that non-admin users cannot get to this page, even if they type in the URL by hand.
 
@@ -231,7 +231,7 @@ Note that non-admin users cannot get to this page, even if they type in the URL 
 
 The application implements a single Collection called "Statuses". Each Statuses document has the following fields: name, quantity, condition, and username.
 
-The Statuses collection is defined in [imports/api/stuff/stuff.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/api/stuff/stuff.js).
+The Statuses collection is defined in [imports/api/Status/Status.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/api/Status/Status.js).
 
 The Statuses collection is initialized in [imports/startup/server/Mongo.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/Mongo.js).
 
@@ -256,7 +256,7 @@ The application allows users to register and create new accounts at any time.
 
 ### Authorization
 
-Only logged in users can manipulate Stuff documents (but any registered user can manipulate any Stuff document, even if they weren't the user that created it.)
+Only logged in users can manipulate Status documents (but any registered user can manipulate any Status document, even if they weren't the user that created it.)
 
 ### Configuration
 
