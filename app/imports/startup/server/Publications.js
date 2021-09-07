@@ -1,22 +1,22 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Symptoms } from '../../api/stuff/Symptom';
+import { Statuses } from '../../api/status/Status';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
-Meteor.publish(Symptoms.userPublicationName, function () {
+Meteor.publish(Statuses.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Symptoms.collection.find({ owner: username });
+    return Statuses.collection.find({ owner: username });
   }
   return this.ready();
 });
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
-Meteor.publish(Symptoms.adminPublicationName, function () {
+Meteor.publish(Statuses.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Symptoms.collection.find();
+    return Statuses.collection.find();
   }
   return this.ready();
 });

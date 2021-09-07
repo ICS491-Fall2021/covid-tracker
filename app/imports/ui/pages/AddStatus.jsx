@@ -5,29 +5,29 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Symptoms } from '../../api/stuff/Symptom';
+import { Statuses } from '../../api/status/Status';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
+  owner: String,
+  createdAt: Date,
+  status: {
     type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
+    allowedValues: ['Not Inputted', 'Clear', 'Not clear'],
+    defaultValue: 'Not Inputted',
   },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class AddStatus extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
     const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
-    Symptoms.collection.insert({ name, quantity, condition, owner },
+    Statuses.collection.insert({ name, quantity, condition, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -47,11 +47,11 @@ class AddStuff extends React.Component {
           <Header as="h2" textAlign="center">Add Stuff</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
+              <TextField name='name' />
+              <NumField name='quantity' decimal={false} />
+              <SelectField name='condition' />
+              <SubmitField value='Submit' />
+              <ErrorsField />
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -60,4 +60,4 @@ class AddStuff extends React.Component {
   }
 }
 
-export default AddStuff;
+export default AddStatus;

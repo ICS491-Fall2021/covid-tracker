@@ -3,12 +3,12 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /**
- * The SymptomsCollection. It encapsulates state and variable values for symptoms.
+ * The StatusesCollection. It encapsulates state and variable values for Statuses.
  */
- class SymptomsCollection {
+ class StatusesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'SymptomsCollection';
+    this.name = 'StatusesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -30,7 +30,7 @@ import { Tracker } from 'meteor/tracker';
 }
 
 /**
- * The singleton instance of the SymptomsCollection.
- * @type {SymptomsCollection}
+ * The singleton instance of the StatusesCollection.
+ * @type {StatusesCollection}
  */
- export const Symptoms = new SymptomsCollection();
+ export const Statuses = new StatusesCollection();

@@ -6,9 +6,9 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Symptoms } from '../../api/stuff/Symptom';
+import { Statuses } from '../../api/status/Status';
 
-const bridge = new SimpleSchema2Bridge(Symptoms.schema);
+const bridge = new SimpleSchema2Bridge(Statuses.schema);
 
 /** Renders the Page for editing a single document. */
 class EditStuff extends React.Component {
@@ -16,7 +16,7 @@ class EditStuff extends React.Component {
   // On successful submit, insert the data.
   submit(data) {
     const { name, quantity, condition, _id } = data;
-    Symptoms.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    Statuses.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -60,11 +60,11 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Symptoms.userPublicationName);
+  const subscription = Meteor.subscribe(Statuses.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the document
-  const doc = Symptoms.collection.findOne(documentId);
+  const doc = Statuses.collection.findOne(documentId);
   return {
     doc,
     ready,
