@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -15,8 +15,8 @@ class EditStatus extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, quantity, condition, _id } = data;
-    Statuses.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { status, _id } = data;
+    Statuses.collection.update(_id, { $set: { status } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -34,9 +34,7 @@ class EditStatus extends React.Component {
           <Header as="h2" textAlign="center">Edit Status</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
+              <SelectField name='status'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
               <HiddenField name='owner' />
