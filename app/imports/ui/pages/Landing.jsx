@@ -8,13 +8,22 @@ class Landing extends React.Component {
       <Grid id='landing-page' verticalAlign='middle' container>
 
         <Grid.Row>
+          <Grid.Column width={12}>
+            <h1>The COVID Tracker Application</h1>
+            <p>Track the COVID status of users, with ease</p>
+          </Grid.Column>
+
           <Grid.Column width={4}>
             <Image size='small' circular src="https://choosingwiselycanada.org/wp-content/uploads/2020/11/COVID-19_2.png"/>
           </Grid.Column>
+        </Grid.Row>
 
-          <Grid.Column width={12} textAlign='center'>
-            <h1>The COVID Tracker Application</h1>
-            <p>Track the COVID status of users, with ease</p>
+        <Grid.Row>
+           <Grid.Column>
+            <div className='description'> 
+              With the spread of the coronavirus (COVID-19), keeping track of your client's COVID data is more paramount than ever. <br/> 
+              The COVID Tracker application allows you to do this seamlessly.
+            </div>
           </Grid.Column>
         </Grid.Row>
 
@@ -24,18 +33,22 @@ class Landing extends React.Component {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Column fluid>
+        <Grid.Column className='status'>
 
           <Grid.Row>
-            <h3>Page 1</h3>
+            <a className='landing-link'>Check COVID Status</a>
+            <div className='description'> 
+            Users will be prompted with short questions about their health at the time of check-in, and will be redirected to a page indicating whether they are able to attend campus or not.
+            </div>
+            <img src='https://www.hawaii.edu/news/wp-content/uploads/2020/08/system-check-in-app-end.jpg'/>
           </Grid.Row>
 
           <Grid.Row>
-            <h3>Page 2</h3>
-          </Grid.Row>
-
-          <Grid.Row>
-            <h3>Page 3</h3>
+            <a className='landing-link'>Update COVID Status</a>
+            <div className='description'> 
+            The nature of the coronavirus is highly unpredictable. Updating your status only takes a few seconds!
+            </div>
+            <img src='https://www.hawaii.edu/news/wp-content/uploads/2020/08/system-check-in-app-end.jpg'/>
           </Grid.Row>
 
         </Grid.Column>
