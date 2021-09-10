@@ -25,7 +25,7 @@ class AddStatus extends React.Component {
   submit(data, formRef) {
     const { status } = data;
     const owner = Meteor.user().username;
-    const createdAt = Date(); // WIP
+    const createdAt = new Date(); // WIP
     Statuses.collection.insert({ status, owner, createdAt},
       (error) => {
         if (error) {
