@@ -9,7 +9,8 @@ class StatusItem extends React.Component {
   render() {
     return (
       <Table.Row>
-        <Table.Cell>{this.props.status.createdAt}</Table.Cell>
+        <Table.Cell>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(this.props.status.createdAt)}</Table.Cell>
+        <Table.Cell>{new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', timeZone: 'HST' }).format(this.props.status.createdAt)}</Table.Cell>
         <Table.Cell>{this.props.status.status}</Table.Cell>
         <Table.Cell>
           <Link to={`/edit/${this.props.status._id}`}>Edit</Link>
@@ -23,8 +24,9 @@ class StatusItem extends React.Component {
 StatusItem.propTypes = {
   status: PropTypes.shape({
     owner: PropTypes.string,
-    createdAt: PropTypes.string, // WIP
+    createdAt: PropTypes.instanceOf(Date), // WIP
     status: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 

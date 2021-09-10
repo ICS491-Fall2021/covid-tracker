@@ -5,9 +5,9 @@
   ],
 
   "defaultData": [
-    { "status": "Clear", "createdAt": 973990800, "owner": "john@foo.com"},
-    { "status": "Not clear", "createdAt": 1239760800, "owner": "john@foo.com"},
-    { "status": "Clear", "createdAt": 1239764400, "owner": "john@foo.com"},
-    { "status": "Not clear", "createdAt": 1239768000, "owner": "admin@foo.com"}
+    { "status": "Clear", "createdAt": "2001-11-11T11:11:11.782Z", "owner": "john@foo.com"},
+    { "status": "Not clear", "createdAt": "1969-07-16T23:03:32.782Z", "owner": "john@foo.com"},
+    { "status": "Clear", "createdAt": "2019-05-26T15:30:00.782Z", "owner": "admin@foo.com"},
+    { "status": "Not clear", "createdAt": "2014-02-01T23:28:56.782Z", "owner": "admin@foo.com"}
   ]
 }

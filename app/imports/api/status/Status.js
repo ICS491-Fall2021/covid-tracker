@@ -14,7 +14,7 @@ import { Tracker } from 'meteor/tracker';
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       owner: String,
-      createdAt: String,
+      createdAt: Date,
       status: {
         type: String,
         allowedValues: ['Not Inputted', 'Clear', 'Not clear'],
