@@ -41,9 +41,13 @@ class AddStatus extends React.Component {
   render() {
     let fRef = null;
     return (
+      <div class="wrap">
+      <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#375739" fill-opacity="1" d="M0,128L80,117.3C160,107,320,85,480,112C640,139,800,213,960,202.7C1120,192,1280,96,1360,48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Status</Header>
+        <Header style={{color: "white", padding: "50px"}} as="h2" textAlign="center">
+            Add Status
+          </Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <SelectField name='status' />
@@ -53,6 +57,7 @@ class AddStatus extends React.Component {
           </AutoForm>
         </Grid.Column>
       </Grid>
+      </div>
     );
   }
 }

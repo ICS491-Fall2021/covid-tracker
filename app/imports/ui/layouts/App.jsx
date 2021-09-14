@@ -34,7 +34,6 @@ class App extends React.Component {
             <AdminProtectedRoute path="/admin" component={ListStatusAdmin}/>
             <Route component={NotFound}/>
           </Switch>
-          <Footer/>
         </div>
       </Router>
     );
