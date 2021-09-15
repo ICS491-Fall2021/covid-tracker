@@ -12,16 +12,22 @@ class NavBar extends React.Component {
     const menuStyle = { marginBottom: '0px' };
     return (
       <Menu style={menuStyle} attached="top" borderless inverted>
-        <Menu.Item as={NavLink} activeClassName="" exact to="/">
+       {this.props.currentUser === '' ? (
+          <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>COVID Tracker</Header>
-        </Menu.Item>
+          </Menu.Item>
+      ) : (
+        <Menu.Item activeClassName="" exact to="/">
+        <Header inverted as='h1'>COVID Tracker</Header>
+      </Menu.Item>
+      )}
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Status</Menu.Item>,
             <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Status</Menu.Item>]
         ) : ''}
-        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+         {/*{Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-        ) : ''}
+         ) : ''}*/}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <Dropdown id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
