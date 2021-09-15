@@ -17,8 +17,8 @@ import { Tracker } from 'meteor/tracker';
       createdAt: Date,
       status: {
         type: String,
-        allowedValues: ['Not Inputted', 'Clear', 'Not clear'],
-        defaultValue: 'Not Inputted',
+        allowedValues: ['Clear', 'Not clear'],
+        defaultValue: 'Clear',
       },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
