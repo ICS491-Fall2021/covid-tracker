@@ -5,7 +5,7 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The StatusesCollection. It encapsulates state and variable values for Statuses.
  */
- class StatusesCollection {
+class StatusesCollection {
   constructor() {
     // The name of this collection.
     this.name = 'StatusesCollection';
@@ -33,4 +33,4 @@ import { Tracker } from 'meteor/tracker';
  * The singleton instance of the StatusesCollection.
  * @type {StatusesCollection}
  */
- export const Statuses = new StatusesCollection();
+export const Statuses = new StatusesCollection();

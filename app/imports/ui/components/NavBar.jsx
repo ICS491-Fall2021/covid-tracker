@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Header } from 'semantic-ui-react';
-import { Roles } from 'meteor/alanning:roles';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
@@ -12,22 +11,22 @@ class NavBar extends React.Component {
     const menuStyle = { marginBottom: '0px' };
     return (
       <Menu style={menuStyle} attached="top" borderless inverted>
-       {this.props.currentUser === '' ? (
+        {this.props.currentUser === '' ? (
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header inverted as='h1'>COVID Tracker</Header>
+            <Header inverted as='h1'>COVID Tracker</Header>
           </Menu.Item>
-      ) : (
-        <Menu.Item activeClassName="" exact to="/">
-        <Header inverted as='h1'>COVID Tracker</Header>
-      </Menu.Item>
-      )}
+        ) : (
+          <Menu.Item activeClassName="" exact to="/">
+            <Header inverted as='h1'>COVID Tracker</Header>
+          </Menu.Item>
+        )}
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Status</Menu.Item>,
             <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Status</Menu.Item>]
         ) : ''}
-         {/*{Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+        {/* {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-         ) : ''}*/}
+         ) : ''} */}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <Dropdown id="login-dropdown" text="Login" pointing="top right" icon={'user'}>

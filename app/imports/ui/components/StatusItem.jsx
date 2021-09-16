@@ -3,7 +3,6 @@ import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
-
 /** Renders a single row in the List Status table. See pages/ListStatus.jsx. */
 class StatusItem extends React.Component {
   render() {
