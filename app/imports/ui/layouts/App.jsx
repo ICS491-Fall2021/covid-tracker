@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStatus from '../pages/ListStatus';
 import ListStatusAdmin from '../pages/ListStatusAdmin';
+import AddVaccine from '../pages/AddVaccine';
 import AddStatus from '../pages/AddStatus';
 import EditStatus from '../pages/EditStatus';
 import NotFound from '../pages/NotFound';
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/list" component={ListStatus}/>
             <ProtectedRoute path="/add" component={AddStatus}/>
+            <ProtectedRoute path="/vaccination" component={AddVaccine}/>
             <ProtectedRoute path="/edit/:_id" component={EditStatus}/>
             <AdminProtectedRoute path="/admin" component={ListStatusAdmin}/>
             <Route component={NotFound}/>
