@@ -1,59 +1,23 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
-      <Grid id='landing-page' verticalAlign='middle' container>
-
-        <Grid.Row>
-          <Grid.Column width={12}>
-            <h1>The COVID Tracker Application</h1>
-            <p>Track the COVID status of users, with ease</p>
-          </Grid.Column>
-
-          <Grid.Column width={4}>
-            <Image size='small' circular src="https://choosingwiselycanada.org/wp-content/uploads/2020/11/COVID-19_2.png"/>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-           <Grid.Column>
-            <div className='description'> 
-              With the spread of the coronavirus (COVID-19), keeping track of your client's COVID data is more paramount than ever. <br/> 
-              The COVID Tracker application allows you to do this seamlessly.
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>
-            <h2>Features</h2>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Column className='status'>
-
-          <Grid.Row>
-            <a className='landing-link'>Check COVID Status</a>
-            <div className='description'> 
-            Users will be prompted with short questions about their health at the time of check-in, and will be redirected to a page indicating whether they are able to attend campus or not.
-            </div>
-            <img src='https://www.hawaii.edu/news/wp-content/uploads/2020/08/system-check-in-app-end.jpg'/>
-          </Grid.Row>
-
-          <Grid.Row>
-            <a className='landing-link'>Update COVID Status</a>
-            <div className='description'> 
-            The nature of the coronavirus is highly unpredictable. Updating your status only takes a few seconds!
-            </div>
-            <img src='https://www.hawaii.edu/news/wp-content/uploads/2020/08/system-check-in-app-end.jpg'/>
-          </Grid.Row>
-
-        </Grid.Column>
-
-      </Grid>
+      <div className="wrap">
+        <div className="content">
+          <h1> Covid Tracker </h1>
+          <p> Sign in to track your COVID-status for the day, add your vaccine status, and more. </p>
+          <div className="btn-group">
+            <a className="primary-btn"><Link to ="/signin">Sign in</Link></a>
+            <a><Link to ="/signup"> Register</Link></a>
+          </div>
+        </div>
+        <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#375739" fillOpacity="1" d="M0,128L80,117.3C160,107,320,85,480,112C640,139,800,213,960,202.7C1120,192,1280,96,1360,
+          48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+      </div>
     );
   }
 }
