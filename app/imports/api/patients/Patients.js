@@ -21,8 +21,12 @@ class PatientsCollection {
         allowedValues: ['Pfizer-BioNTech', 'Moderna', 'Janssen (Johnson & Johnson)', 'AstraZeneca-AZD1222', 'Sinopharm BIBP-SARS-CoV-2', 'Sinovac-SARS-CoV-2',
           'Gamelya-Sputnik V', 'CanSinoBio', 'Vector - EpiVacCorona', 'Zhifei Longcom - Recombinant Novel', 'IMBCAMS-SARS-CoV-2', 'Novavax'],
       },
-      dose1id: { defaultValue: 0, type: Number },
-      dose2id: { defaultValue: 0, type: Number },
+      dose1Lot: { label: 'Manufacturer Lot Number', type: Number },
+      dose1Date: { label: 'Date Administered', type: Date },
+      dose1Site: { label: 'Healthcare Professional or Clinic Site', type: String },
+      dose2Lot: { label: 'Manufacturer Lot Number', type: Number },
+      dose2Date: { label: 'Date Administered', type: Date },
+      dose2Site: { label: 'Healthcare Professional or Clinic Site', type: String },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

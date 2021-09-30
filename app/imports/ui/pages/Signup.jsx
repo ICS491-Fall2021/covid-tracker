@@ -46,7 +46,7 @@ class Signup extends React.Component {
         <Container id="signup-page">
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Header style={{ color: 'white', padding: '50px' }} as="h2" textAlign="center">
+              <Header style={{ color: 'white', padding: '100px 0px 50px' }} as="h2" textAlign="center">
               Register your account
               </Header>
               <Form onSubmit={this.submit}>

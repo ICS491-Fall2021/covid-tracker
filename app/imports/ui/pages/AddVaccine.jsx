@@ -15,6 +15,13 @@ const formSchema = new SimpleSchema({
     allowedValues: ['Pfizer-BioNTech', 'Moderna', 'Janssen (Johnson & Johnson)', 'AstraZeneca-AZD1222', 'Sinopharm BIBP-SARS-CoV-2', 'Sinovac-SARS-CoV-2',
       'Gamelya-Sputnik V', 'CanSinoBio', 'Vector - EpiVacCorona', 'Zhifei Longcom - Recombinant Novel', 'IMBCAMS-SARS-CoV-2', 'Novavax'],
   },
+  dose1Lot: { label: 'Manufacturer Lot Number', type: Number },
+  dose1Date: { label: 'Date Administered', type: Date },
+  dose1Site: { label: 'Healthcare Professional or Clinic Site', type: String },
+  dose2Lot: { label: 'Manufacturer Lot Number', type: Number, optional: true },
+  dose2Date: { label: 'Date Administered', type: Date, optional: true },
+  dose2Site: { label: 'Healthcare Professional or Clinic Site', type: String, optional: true },
+
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -24,10 +31,21 @@ class AddVaccine extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { patientNumber, vaccineType } = data;
+    const { patientNumber, vaccineType, dose1Lot, dose1Date, dose1Site } = data;
+    let { dose2Lot, dose2Date, dose2Site } = data;
     const user = Meteor.user().username;
     const uploaded = new Date();
-    Patients.collection.insert({ user, uploaded, patientNumber, vaccineType/*, doseId1, doseId2 */ },
+    if (typeof dose2Lot === 'undefined') {
+      dose2Lot = 0;
+    }
+    if (typeof dose2Date === 'undefined') {
+      dose2Date = '1970-01-01T15:30:00.782Z';
+    }
+    if (typeof dose2Site === 'undefined') {
+      dose2Site = 'N/A';
+    }
+
+    Patients.collection.insert({ user, uploaded, patientNumber, vaccineType, dose1Lot, dose1Date, dose1Site, dose2Lot, dose2Date, dose2Site },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -48,13 +66,21 @@ class AddVaccine extends React.Component {
           192,1280,96,1360,48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
         <Grid container centered>
           <Grid.Column>
-            <Header style={{ color: 'white', padding: '50px' }} as="h2" textAlign="center">
+            <Header style={{ color: 'white', padding: '100px 0px 50px' }} as="h2" textAlign="center">
               Add Vaccine Info
             </Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='patientNumber' />
+                <TextField name='patientNumber' placeholder={'Medical record of IIS record number'}/>
                 <SelectField name='vaccineType' />
+                <Header as="h4">Dose 1</Header>
+                <TextField name='dose1Lot' placeholder={'From vaccination card'}/>
+                <DateField name='dose1Date' placeholder={'mm/dd/yyyy'}/>
+                <TextField name='dose1Site' placeholder={'From vaccination card'}/>
+                <Header as="h4">Dose 2 (leave blank for Johnson & Johnson)</Header>
+                <TextField name='dose2Lot' placeholder={'From vaccination card'} required={false}/>
+                <DateField name='dose2Date' placeholder={'mm/dd/yyyy'} required={false}/>
+                <TextField name='dose2Site' placeholder={'From vaccination card'} required={false}/>
                 <SubmitField value='Submit' />
                 <ErrorsField />
               </Segment>

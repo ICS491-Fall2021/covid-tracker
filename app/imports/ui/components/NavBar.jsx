@@ -10,7 +10,7 @@ class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '0px' };
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
+      <Menu style={menuStyle} fixed="top" borderless inverted>
         {this.props.currentUser === '' ? (
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
             <Header inverted as='h1'>COVID Tracker</Header>
