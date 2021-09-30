@@ -69,6 +69,14 @@ class AddStatus extends React.Component {
               Have you been in contact with someone who has tested positive in the last 10 days?
               If you answered no to both questions, you are Clear. <hr/>
                 <SelectField name='status' />
+                <div className='image-upload'>
+                  <div>
+                    <strong>Upload Vaccine Card</strong>
+                  </div>
+                  <div>
+                    <input type="hidden" role="uploadcare-uploader" name="my_file" />
+                  </div>
+                </div>
                 <SubmitField value='Submit' />
                 <ErrorsField />
               </Segment>

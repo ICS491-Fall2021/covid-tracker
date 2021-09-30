@@ -14,5 +14,11 @@
   "monti": {
     "appId": "changeme",
     "appSecret": "changeme"
+  },
+
+  "public": {
+      "uploadcare": {
+        "publicKey": "514e067f5b413164d32e"
+      }
   }
 }
