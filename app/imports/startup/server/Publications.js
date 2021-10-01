@@ -1,6 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Statuses } from '../../api/status/Status';
+import { Patients } from '../../api/patients/Patients';
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Patients.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Patients.collection.find({ user: username });
+  }
+  return this.ready();
+});
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
