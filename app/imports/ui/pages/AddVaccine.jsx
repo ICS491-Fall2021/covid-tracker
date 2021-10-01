@@ -39,7 +39,7 @@ class AddVaccine extends React.Component {
       dose2Lot = 0;
     }
     if (typeof dose2Date === 'undefined') {
-      dose2Date = '1970-01-01T15:30:00.782Z';
+      dose2Date = new Date('January 01, 1970 00:00:00');
     }
     if (typeof dose2Site === 'undefined') {
       dose2Site = 'N/A';
