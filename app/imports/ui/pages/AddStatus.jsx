@@ -47,7 +47,7 @@ class AddStatus extends React.Component {
           192,1280,96,1360,48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
         <Grid container centered>
           <Grid.Column>
-            <Header style={{ color: 'white', padding: '50px' }} as="h2" textAlign="center">
+            <Header style={{ color: 'white', padding: '100px 0px 50px' }} as="h2" textAlign="center">
             Add Status
             </Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
