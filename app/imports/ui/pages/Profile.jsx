@@ -7,6 +7,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Statuses } from '../../api/status/Status';
+import { NavLink } from 'react-router-dom';
+import { Menu, Dropdown } from 'semantic-ui-react';
+
 
 const bridge = new SimpleSchema2Bridge(Statuses.schema);
 
@@ -33,16 +36,25 @@ class Profile extends React.Component {
                 <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#375739" fillOpacity="1" d="M0,128L80,117.3C160,107,320,85,480,112C640,139,800,213,960,202.7C1120,192,1280,
           96,1360,48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-                <div>
-                    <h1>Help your community by </h1>
-                    <h1>checking your COVID status</h1>
-                    <p>NUMBER OF TIMES YOU'VE CHECKED IN: #days</p>
-                </div>
-                <div class="imgbutton">
-                    <a href="http://google.com"><img src="/images/time1.png" height="200px" width="300px"></img></a>
-                    <h3 class="toptxt">LIST PAST STATUSES</h3>
-                    <h3 class="bottomtxt">streak</h3>
-                </div>
+                <section class="profile">
+                    <div>
+                        <h1>Help your community by <br/> checking your COVID status</h1>
+                        <p class="accent">NUMBER OF TIMES YOU'VE CHECKED IN: #days</p>
+                    </div>
+                    <div class ="imgbutton">
+                        <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>
+                            <img src="/images/time1.jpeg" height="200px" width="300px"></img>
+                        </Menu.Item>
+                        <h3 class ="toptxt">LIST PAST STATUSES</h3>
+                    </div>
+                    <div class ="imgbutton">
+                        <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>
+                            <img src="images/family2.jpeg" height="200px" width="300px"></img>
+                        </Menu.Item>
+                        <h3 class ="toptxt">ADD STATUS FOR TODAY</h3>
+                    </div>
+                    <h1 class="righttxt">Your Profile</h1>
+                </section>
             </div>
         );
     }
