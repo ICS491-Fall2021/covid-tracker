@@ -42,10 +42,6 @@
 	background-color: #375739;
 }
 
-.image-upload {
-	margin: 10px 0;
-}
-
 @media (max-width: 600px) {
 	.content .btn-group {
 		margin-top: 20px;
