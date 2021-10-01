@@ -17,7 +17,7 @@ class VaccinationItem extends React.Component {
         {this.props.patient.dose2Date - new Date('January 01, 1970 00:00:00') === 0 &&
         <Table.Cell>N/A</Table.Cell>
         }
-        <Table.Cell textAlign='center'><input type="hidden" role="uploadcare-uploader" name="my_file" /></Table.Cell>
+        <Table.Cell textAlign='center'><input type="hidden" role="uploadcare-uploader" name='my_file'/></Table.Cell>
       </Table.Row>
     );
   }
