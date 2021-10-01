@@ -2,13 +2,11 @@
 	background-blend-mode: overlay;
 	background: rgba(0,0,0,0.5) url(https://manoa.hawaii.edu/wp/wp-content/uploads/2020/12/strategic-plan-hero.jpg) no-repeat center;
 	background-size: cover;
-	height: 90vh;
-}
-
-.wave {
 	position: fixed;
 	width: 100%;
-	bottom: 0px;
+    top: 0;
+    left: 0;
+	height: 100%;
 }
 
 .content {
