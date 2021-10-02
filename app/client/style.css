@@ -104,3 +104,10 @@ img:hover {
 	right: 40px; 
 	float: right;
 }
+
+#wave {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	z-index: -1;
+}
