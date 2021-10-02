@@ -46,3 +46,61 @@
 		margin-top: 20px;
 	}
 }
+
+.wrap .profile {
+	font-family: Abel;
+	color: white;
+	font-size: 1em;
+	font-style: normal;
+    font-weight: normal;
+	padding: 140px 0px 0px 90px;
+}
+
+.wrap .profile h1 {
+	font-family: Abel;
+	font-size: 5em;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.accent {
+	color: #D2FFCB;
+	font-size: large;
+}
+
+.imgbutton {
+	margin: 0px 6% 0px 0px;
+	position: relative;
+	float: right;
+}
+
+.imgbutton img {
+	border-radius: 10%;
+}
+
+img:hover {
+	box-shadow: 0 0 5px 1px #e3fddf;
+}
+
+.toptxt {
+	position: absolute;
+	top: 5px;
+	left: 20px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.bottomtxt {
+	position: absolute;
+	bottom: 5px;
+	left: 20px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.righttxt {
+	position: absolute; 
+	bottom: 20px; 
+	right: 40px; 
+	float: right;
+}
