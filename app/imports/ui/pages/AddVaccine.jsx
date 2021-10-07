@@ -21,7 +21,7 @@ const formSchema = new SimpleSchema({
   dose2Lot: { label: 'Manufacturer Lot Number', type: Number, optional: true },
   dose2Date: { label: 'Date Administered', type: Date, optional: true },
   dose2Site: { label: 'Healthcare Professional or Clinic Site', type: String, optional: true },
-
+  imageUrl: { label: 'Upload your vaccine card', type: String, optional: true }
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -45,7 +45,9 @@ class AddVaccine extends React.Component {
       dose2Site = 'N/A';
     }
 
-    Patients.collection.insert({ user, uploaded, patientNumber, vaccineType, dose1Lot, dose1Date, dose1Site, dose2Lot, dose2Date, dose2Site },
+    const imageUrl = document.querySelectorAll('[role="uploadcare-uploader"]')[0].defaultValue;
+
+    Patients.collection.insert({ user, uploaded, patientNumber, vaccineType, dose1Lot, dose1Date, dose1Site, dose2Lot, dose2Date, dose2Site, imageUrl },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -78,6 +80,10 @@ class AddVaccine extends React.Component {
                 <TextField name='dose2Lot' placeholder={'From vaccination card'} required={false}/>
                 <DateField name='dose2Date' placeholder={'mm/dd/yyyy'} required={false}/>
                 <TextField name='dose2Site' placeholder={'From vaccination card'} required={false}/>
+                <strong>Upload vaccine card</strong>
+                <div className='image-upload'> 
+                  <input type="hidden" role="uploadcare-uploader" name='imageUrl' required={false}/>
+                </div>
                 <SubmitField value='Submit' />
                 <ErrorsField />
               </Segment>

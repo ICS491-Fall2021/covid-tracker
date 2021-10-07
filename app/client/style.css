@@ -111,3 +111,7 @@ img:hover {
 	bottom: 0px;
 	z-index: -1;
 }
+
+.image-upload {
+	margin: 10px 0;
+}

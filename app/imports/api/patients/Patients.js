@@ -15,6 +15,7 @@ class PatientsCollection {
     this.schema = new SimpleSchema({
       user: String,
       uploaded: Date,
+      imageUrl: String,
       patientNumber: { label: 'Patient Number', type: Number },
       vaccineType: {
         type: String,
