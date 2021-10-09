@@ -37,7 +37,7 @@ export default class Signin extends React.Component {
   render() {
     // if correct authentication, redirect to add status page instead of login screen
     if (this.state.redirectToReferer) {
-      return <Redirect to="/add"/>;
+      return <Redirect to="/profile"/>;
     }
     // Otherwise return the Login form.
     return (
