@@ -19,7 +19,7 @@ class VaccinationItem extends React.Component {
         <Table.Cell>N/A</Table.Cell>
         }
         <Table.Cell>
-           <a onClick={() => window.open(this.props.patient.imageUrl, '_blank')}>
+           <a href={this.props.patient.imageUrl} target="_blank">
            { this.props.patient.imageUrl ? 'View image' : '' }
            </a>
         </Table.Cell>
