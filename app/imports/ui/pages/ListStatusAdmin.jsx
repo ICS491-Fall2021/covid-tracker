@@ -31,6 +31,7 @@ class ListStatusAdmin extends React.Component {
           </Table.Header>
           <Table.Body>
             {this.props.Statuses.map((Status) => <StatusItemAdmin key={Status._id} Status={Status} />)}
+            {numDays}
           </Table.Body>
         </Table>
       </Container>
@@ -52,6 +53,7 @@ export default withTracker(() => {
   const ready = subscription.ready();
   // Get the Status documents
   const Statuses = Statuses.collection.find({}).fetch();
+  const numDays = Statuses.collection.count();
   return {
     Statuses,
     ready,

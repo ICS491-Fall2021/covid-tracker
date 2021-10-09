@@ -1,28 +1,19 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField } from 'uniforms-semantic';
+import { Loader } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Statuses } from '../../api/status/Status';
 import { NavLink } from 'react-router-dom';
-import { Menu, Dropdown } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 
 const bridge = new SimpleSchema2Bridge(Statuses.schema);
+var numDays = 0;
 
 /** Renders the Page for editing a single document. */
 class Profile extends React.Component {
-
-    // On successful submit, insert the data.
-    submit(data) {
-        const { status, _id } = data;
-        Statuses.collection.update(_id, { $set: { status } }, (error) => (error ?
-            swal('Error', error.message, 'error') :
-            swal('Success', 'Item updated successfully', 'success')));
-    }
 
     // If the subscription(s) have been received, render the page, otherwise show a loading icon.
     render() {
@@ -36,7 +27,8 @@ class Profile extends React.Component {
                 <section class="profile">
                     <div>
                         <h1>Help your community by <br/> checking your COVID status</h1>
-                        <p class="accent">NUMBER OF TIMES YOU'VE CHECKED IN: #days</p>
+                        <p class="accent">NUMBER OF TIMES YOU'VE CHECKED IN: {numDays}</p>
+                        
                     </div>
                     <div class ="imgbutton">
                         <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>
@@ -77,6 +69,8 @@ export default withTracker(({ match }) => {
     const ready = subscription.ready();
     // Get the document
     const doc = Statuses.collection.findOne(documentId);
+    numDays = Statuses.collection.find({documentId}).count();
+    console.log(numDays);
     return {
         doc,
         ready,
