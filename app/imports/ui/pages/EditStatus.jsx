@@ -32,7 +32,7 @@ class EditStatus extends React.Component {
       <div className="wrap">
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" style={{ color: 'white', padding: '50px 0 0 0' }} textAlign="center">Edit Status</Header>
+            <Header as="h2" style={{ color: 'white', padding: '100px 0 0 0' }} textAlign="center">Edit Status</Header>
             <Header as="h4" style={{ color: 'white' }} textAlign="center">From {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(this.props.doc.createdAt) }
           , at {new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', timeZone: 'HST' }).format(this.props.doc.createdAt)}</Header>
             <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
