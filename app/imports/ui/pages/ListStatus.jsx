@@ -30,7 +30,7 @@ class ListStatus extends React.Component {
                 <Table.HeaderCell>Vaccination Type</Table.HeaderCell>
                 <Table.HeaderCell>1st Dose Date</Table.HeaderCell>
                 <Table.HeaderCell>2nd Dose Date</Table.HeaderCell>
-                <Table.HeaderCell>Upload Vaccine Card</Table.HeaderCell>
+                <Table.HeaderCell>Vaccine card</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

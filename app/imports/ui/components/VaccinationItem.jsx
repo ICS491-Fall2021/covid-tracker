@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Status table. See pages/ListStatus.jsx. */
 class VaccinationItem extends React.Component {
+
   render() {
     return (
       <Table.Row>
@@ -17,7 +18,11 @@ class VaccinationItem extends React.Component {
         {this.props.patient.dose2Date - new Date('January 01, 1970 00:00:00') === 0 &&
         <Table.Cell>N/A</Table.Cell>
         }
-        <Table.Cell textAlign='center'><input type="hidden" role="uploadcare-uploader" name='my_file'/></Table.Cell>
+        <Table.Cell>
+           <a href={this.props.patient.imageUrl} target="_blank">
+           { this.props.patient.imageUrl ? 'View image' : '' }
+           </a>
+        </Table.Cell>
       </Table.Row>
     );
   }
@@ -30,6 +35,7 @@ VaccinationItem.propTypes = {
     uploaded: PropTypes.instanceOf(Date), // WIP
     dose1Date: PropTypes.instanceOf(Date),
     dose2Date: PropTypes.instanceOf(Date),
+    imageUrl: PropTypes.string,
     // _id: PropTypes.string,
   }).isRequired,
 };
